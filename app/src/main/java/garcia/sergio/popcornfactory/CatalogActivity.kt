@@ -161,10 +161,10 @@ class CatalogActivity : AppCompatActivity() {
             var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             var vista = inflator.inflate(R.layout.cell_movie, null)
             var image: ImageView = vista.findViewById(R.id.image_movie_cell)
-           // var title: TextView = vista.findViewById(R.id.movie_tittle_cell)
+            var title: TextView = vista.findViewById(R.id.movie_tittle_cell)
 
             image.setImageResource(pelicula.image)
-          //  title.setText(pelicula.titulo)
+            title.setText(pelicula.titulo)
 
             image.setOnClickListener{
                 var intento = Intent(context, MovieDetail::class.java)
