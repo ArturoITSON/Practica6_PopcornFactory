@@ -28,6 +28,8 @@ class MovieDetail : AppCompatActivity() {
         var id: Int = getIntent().getIntExtra("pos",-1)
         var boton: Button = findViewById(R.id.buy_tickets)
 
+       // var lista : ArrayList<Pelicula>? = getIntent().getSerializableExtra("lista") as? ArrayList<Pelicula>
+
         var imagen : ImageView = findViewById(R.id.image_movie_only)
         var title : TextView = findViewById(R.id.movie_tittle_only)
         var sinops: TextView = findViewById(R.id.movie_description_only)
@@ -36,6 +38,12 @@ class MovieDetail : AppCompatActivity() {
         imagen.setImageResource(image.toInt())
         title.setText(titulo)
         sinops.setText(sinopsis)
+
+
+        if(CatalogActivity.DataProvider.peliculas[id].seats.size != 0){
+            asientoLeft = 20 - CatalogActivity.DataProvider.peliculas[id].seats.size
+        }
+
         seats.setText(asientoLeft.toString() + " seat available")
 
 
@@ -50,6 +58,7 @@ class MovieDetail : AppCompatActivity() {
 
                 intent.putExtra("movie", id)
                 intent.putExtra("name", titulo)
+              //  intent.putExtra("lista", lista)
 
                 this.startActivity(intent)
 

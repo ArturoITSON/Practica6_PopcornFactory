@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -23,6 +24,21 @@ class SeatSelection : AppCompatActivity() {
             insets
         }
 
+        val bundle = intent.extras
+
+        val title: TextView = findViewById(R.id.titleSeat)
+        var posMovie = -1
+
+
+        if(bundle != null){
+
+            title.setText(bundle.getString("name"))
+            posMovie = bundle.getInt("movie")
+
+
+
+        }
+
 
 
 
@@ -31,7 +47,35 @@ class SeatSelection : AppCompatActivity() {
         val row3: RadioGroup = findViewById(R.id.rowl3)
         val row4: RadioGroup = findViewById(R.id.rowl4)
 
+        val allRows = listOf(row1, row2, row3, row4)
+        val asientosAsignados = ArrayList<Int>()
+
+        for (i in CatalogActivity.DataProvider.peliculas[posMovie].seats){
+            asientosAsignados.add(i.asiento)
+        }
+
+
+
+        for (row in allRows) {
+            for (i in 0 until row.childCount) {
+                val boton = row.getChildAt(i)
+                if (boton is RadioButton) {
+                    val texto = boton.text.toString()
+                    if (asientosAsignados.contains(texto.toInt())) {
+                        // Acción: por ejemplo, desactivar y cambiar color
+                        boton.isEnabled = false
+                        boton.background = ContextCompat.getDrawable(this, R.drawable.radio_disabled)
+
+                    }
+                }
+            }
+        }
+
+
+
         var selectedRadioButtonId: Int = -1
+
+
 
         row1.setOnCheckedChangeListener{group, checkId ->
 
@@ -92,20 +136,12 @@ class SeatSelection : AppCompatActivity() {
 
 
 
-        val title: TextView = findViewById(R.id.titleSeat)
-        var posMovie = -1
+
+        var lista : ArrayList<Pelicula>? = getIntent().getSerializableExtra("lista") as? ArrayList<Pelicula>
 
 
-        val bundle = intent.extras
 
 
-        if(bundle != null){
-
-            title.setText(bundle.getString("name"))
-            posMovie = bundle.getInt("movie")
-
-
-        }
 
 
         val confirm : Button = findViewById(R.id.confirm)
@@ -127,6 +163,8 @@ class SeatSelection : AppCompatActivity() {
 
             intent.putExtra("name", bundle?.getString("name"))
             intent.putExtra("asiento", selectedText.toInt())
+            //intent.putExtra("lista" , lista)
+            intent.putExtra("pos", posMovie)
 
 
 
@@ -140,4 +178,9 @@ class SeatSelection : AppCompatActivity() {
 
 
     }
+
+
+
+
+
 }

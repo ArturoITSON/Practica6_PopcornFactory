@@ -20,7 +20,12 @@ class CatalogActivity : AppCompatActivity() {
     var adapter: PeliculaAdapter? = null
     var seriesAdapter : PeliculaAdapter? = null
 
-    var peliculas = ArrayList<Pelicula>()
+    object DataProvider {
+        val peliculas: ArrayList<Pelicula> = arrayListOf()
+    }
+
+
+
     var series = ArrayList<Pelicula>()
 
 
@@ -35,7 +40,7 @@ class CatalogActivity : AppCompatActivity() {
         }
 
         cargarPeliculas()
-        adapter = PeliculaAdapter(this, peliculas)
+        adapter = PeliculaAdapter(this, DataProvider.peliculas)
         seriesAdapter = PeliculaAdapter(this, series)
 
         var gridPelis: GridView = findViewById(R.id.movies_catalog)
@@ -49,13 +54,13 @@ class CatalogActivity : AppCompatActivity() {
 
     fun cargarPeliculas(){
 
-        peliculas.add(Pelicula("Big Hero 6", R.drawable.bighero6, R.drawable.headerbighero6, "When a devastating event befalls the city of San Fransokyo and catapults Hiro into the midst of danger, he turns to Baymax and his close friends adrenaline junkie Go Go Tomago, neatnik Wasabi, chemistry whiz Honey Lemon and fanboy Fred. Determined to uncover the mystery, Hiro transforms his friends into a band of high-tech heroes called Big Hero 6", arrayListOf<Cliente>()))
-        peliculas.add((Pelicula("1917", R.drawable.nineteenseventeen, R.drawable.header1917, "British trenches somewhere in France. World war has been going on for the third year, heroic illusions have dissipated; general mood - boredom and fatigue. Stuff the belly, sleep, return home to Christmas Eve. On another quiet day, when nothing happens, two young soldiers, Blake and Schofield, are summoned to the general, who instructs them to send an important message to Colonel MacKenzie in the Second Devonshire Battalion, whose telephone connection was cut off by the enemy.", arrayListOf<Cliente>())))
-        peliculas.add(Pelicula("Leap year", R.drawable.leapyear, R.drawable.leapyearheader, "A woman who has an elaborate scheme to propose to her boyfriend on Leap Day, an Irish\n" +
+        DataProvider.peliculas.add(Pelicula("Big Hero 6", R.drawable.bighero6, R.drawable.headerbighero6, "When a devastating event befalls the city of San Fransokyo and catapults Hiro into the midst of danger, he turns to Baymax and his close friends adrenaline junkie Go Go Tomago, neatnik Wasabi, chemistry whiz Honey Lemon and fanboy Fred. Determined to uncover the mystery, Hiro transforms his friends into a band of high-tech heroes called Big Hero 6", arrayListOf<Cliente>()))
+        DataProvider.peliculas.add((Pelicula("1917", R.drawable.nineteenseventeen, R.drawable.header1917, "British trenches somewhere in France. World war has been going on for the third year, heroic illusions have dissipated; general mood - boredom and fatigue. Stuff the belly, sleep, return home to Christmas Eve. On another quiet day, when nothing happens, two young soldiers, Blake and Schofield, are summoned to the general, who instructs them to send an important message to Colonel MacKenzie in the Second Devonshire Battalion, whose telephone connection was cut off by the enemy.", arrayListOf<Cliente>())))
+        DataProvider.peliculas.add(Pelicula("Leap year", R.drawable.leapyear, R.drawable.leapyearheader, "A woman who has an elaborate scheme to propose to her boyfriend on Leap Day, an Irish\n" +
                 "tradition which occurs every time the date February 29 rolls around, faces a major setback\n" +
                 "when bad weather threatens to derail her planned trip to Dublin. With the help of an\n" +
                 "innkeeper, however, her cross-country odyssey just might result in her getting engaged.", arrayListOf<Cliente>()))
-        peliculas.add(Pelicula("Men in Black", R.drawable.mib, R.drawable.mibheader, "Based off of the comic book. Unbeknownst to other people, there is a private agency code\n" +
+        DataProvider.peliculas.add(Pelicula("Men in Black", R.drawable.mib, R.drawable.mibheader, "Based off of the comic book. Unbeknownst to other people, there is a private agency code\n" +
                 "named MiB. This agency is some kind of extra terrestrial surveillance corporation. Then,\n" +
                 "one of the agency&#39;s finest men only going by the name &quot;K&quot; (Tommy Lee Jones) , is\n" +
                 "recruiting for a new addition to the agency. He has chosen James Edwards (Will Smith) of\n" +
@@ -63,13 +68,13 @@ class CatalogActivity : AppCompatActivity() {
                 "the &quot;Bug&quot; race. He takes the body of a farmer (Vincent D&#39;Onofrio) and heads to New York.\n" +
                 "He is searching for a super energy source called &quot;The Galaxy&quot;. Now, Agents J and K must\n" +
                 "stop the bug before it can escape with the galaxy.", arrayListOf<Cliente>()))
-        peliculas.add(Pelicula("Toy Story", R.drawable.toystory, R.drawable.toystoryheader, "Toy Story is about the &#39;secret life of toys&#39; when people are not around. When Buzz\n" +
+        DataProvider.peliculas.add(Pelicula("Toy Story", R.drawable.toystory, R.drawable.toystoryheader, "Toy Story is about the &#39;secret life of toys&#39; when people are not around. When Buzz\n" +
                 "Lightyear, a space-ranger, takes Woody&#39;s place as Andy&#39;s favorite toy, Woody doesn&#39;t like\n" +
                 "the situation and gets into a fight with Buzz. Accidentaly Buzz falls out the window and\n" +
                 "Woody is accused by all the other toys of having killed him. He has to go out of the house\n" +
                 "to look for him so that they can both return to Andys room. But while on the outside they\n" +
                 "get into all kind of trouble while trying to get home.", arrayListOf<Cliente>()))
-        peliculas.add(Pelicula("Inception", R.drawable.inception, R.drawable.inceptionheader, "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing\n" +
+        DataProvider.peliculas.add(Pelicula("Inception", R.drawable.inception, R.drawable.inceptionheader, "Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction, stealing\n" +
                 "valuable secrets from deep within the subconscious during the dream state, when the\n" +
                 "mind is at its most vulnerable. Cobb&#39;s rare ability has made him a coveted player in this\n" +
                 "treacherous new world of corporate espionage, but it has also made him an international\n" +
@@ -83,9 +88,9 @@ class CatalogActivity : AppCompatActivity() {
 
 
 
-        peliculas.add(Pelicula("The Matrix", R.drawable.matrix, R.drawable.matrixheader, "Thomas Anderson, a computer programmer, is led to a forbidding underworld where he discovers the shocking truth—the life he knows is the elaborate deception of an evil cyber-intelligence. He joins a rebellion against the machines, a journey that changes his perception of reality forever.", arrayListOf<Cliente>()))
+        DataProvider.peliculas.add(Pelicula("The Matrix", R.drawable.matrix, R.drawable.matrixheader, "Thomas Anderson, a computer programmer, is led to a forbidding underworld where he discovers the shocking truth—the life he knows is the elaborate deception of an evil cyber-intelligence. He joins a rebellion against the machines, a journey that changes his perception of reality forever.", arrayListOf<Cliente>()))
 
-        peliculas.add(Pelicula("Interstellar", R.drawable.interstellar, R.drawable.interstellarheader, "In a future where Earth is becoming uninhabitable, a team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival. As they venture into the unknown, they confront mind-bending phenomena and personal sacrifices.", arrayListOf<Cliente>()))
+        DataProvider.peliculas.add(Pelicula("Interstellar", R.drawable.interstellar, R.drawable.interstellarheader, "In a future where Earth is becoming uninhabitable, a team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival. As they venture into the unknown, they confront mind-bending phenomena and personal sacrifices.", arrayListOf<Cliente>()))
 
 
 
