@@ -53,15 +53,38 @@
     <TextView
         android:id="@+id/movie_description_only"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/white"
-        android:text="..."
-        android:fontFamily="sans-serif-condensed"
+        android:layout_height="209dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:textSize="14sp"/>
+        android:fontFamily="sans-serif-condensed"
+        android:text="..."
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/buy_tickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button"
+        android:textColor="@color/black"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Buy my ticket" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seatLeft"
+        android:textColor="@color/grisClaro"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:layout_marginTop="7dp"
+        />
+
 
 
 </LinearLayout>
