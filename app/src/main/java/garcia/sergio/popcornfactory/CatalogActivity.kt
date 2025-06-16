@@ -49,17 +49,8 @@ class CatalogActivity : AppCompatActivity() {
 
     fun cargarPeliculas(){
 
-        peliculas.add(Pelicula("Big Hero 6", R.drawable.bighero6, R.drawable.headerbighero6, "When a devastating event befalls the city of San Fransokyo and catapults Hiro into the\n" +
-                "midst of danger, he turns to Baymax and his close friends adrenaline junkie Go Go\n" +
-                "Tomago, neatnik Wasabi, chemistry whiz Honey Lemon and fanboy Fred. Determined to\n" +
-                "uncover the mystery, Hiro transforms his friends into a band of high-tech heroes called\n" +
-                "&quot;Big Hero 6.&quot;"))
-        peliculas.add((Pelicula("1917", R.drawable.nineteenseventeen, R.drawable.header1917, "British trenches somewhere in France. World war has been going on for the third year,\n" +
-                "heroic illusions have dissipated; general mood - boredom and fatigue. Stuff the belly,\n" +
-                "sleep, return home to Christmas Eve. On another quiet day, when nothing happens, two\n" +
-                "young soldiers, Blake and Schofield, are summoned to the general, who instructs them to\n" +
-                "send an important message to Colonel MacKenzie in the Second Devonshire Battalion,\n" +
-                "whose telephone connection was cut off by the enemy.")))
+        peliculas.add(Pelicula("Big Hero 6", R.drawable.bighero6, R.drawable.headerbighero6, "When a devastating event befalls the city of San Fransokyo and catapults Hiro into the midst of danger, he turns to Baymax and his close friends adrenaline junkie Go Go Tomago, neatnik Wasabi, chemistry whiz Honey Lemon and fanboy Fred. Determined to uncover the mystery, Hiro transforms his friends into a band of high-tech heroes called Big Hero 6"))
+        peliculas.add((Pelicula("1917", R.drawable.nineteenseventeen, R.drawable.header1917, "British trenches somewhere in France. World war has been going on for the third year, heroic illusions have dissipated; general mood - boredom and fatigue. Stuff the belly, sleep, return home to Christmas Eve. On another quiet day, when nothing happens, two young soldiers, Blake and Schofield, are summoned to the general, who instructs them to send an important message to Colonel MacKenzie in the Second Devonshire Battalion, whose telephone connection was cut off by the enemy.")))
         peliculas.add(Pelicula("Leap year", R.drawable.leapyear, R.drawable.leapyearheader, "A woman who has an elaborate scheme to propose to her boyfriend on Leap Day, an Irish\n" +
                 "tradition which occurs every time the date February 29 rolls around, faces a major setback\n" +
                 "when bad weather threatens to derail her planned trip to Dublin. With the help of an\n" +
@@ -172,6 +163,8 @@ class CatalogActivity : AppCompatActivity() {
                 intento.putExtra("sinopsis", pelicula.sinopsis)
                 intento.putExtra("header", pelicula.header)
                 intento.putExtra("imagen", pelicula.image)
+
+
                 context!!.startActivity(intento)
             }
 
